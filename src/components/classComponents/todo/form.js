@@ -28,7 +28,7 @@ const settings = useContext(SettingsContext);
                     <br />
                     <span>Difficulty</span>
                     <br />
-                    <input onChange={props.handleChange} intent={'primary'} defaultValue={1} type="range" min={1} max={5} name="difficulty" />
+                    <input onChange={props.handleChange} intent={'primary'} defaultValue={2} type="range" min={1} max={8} name="difficulty" />
                 </label>
                 <br/> <br/>
                 <label>
@@ -41,7 +41,7 @@ const settings = useContext(SettingsContext);
                 </label>
                 <label>
                 <span>Number of Item </span>
-                <input type="number" min="1" max="5" value={settings.state.displayPerScreen} onChange={settings.state.toDisplayPerScreen}/>
+                <input type="number" min="1" max="20" value={settings.state.displayPerScreen} onChange={settings.state.toDisplayPerScreen}/>
                 </label>
                 </FormGroup>
             </form>
