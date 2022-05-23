@@ -11,7 +11,6 @@ export default function SettingsProvider(props) {
     
 
     function displayItems(){
-        // saves user preferences at local storage.
         if(localStorage.getItem('displayItem')){
             localStorage.removeItem('displayItem')
         }

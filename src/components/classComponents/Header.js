@@ -1,18 +1,26 @@
-import "normalize.css";
-import "@blueprintjs/core/lib/css/blueprint.css";
-import "@blueprintjs/icons/lib/css/blueprint-icons.css";
-import { Navbar,Alignment ,Button,Colors} from "@blueprintjs/core";
+import { useContext } from 'react';
+import { LoginContext } from '../context/login';
+import { When } from 'react-if';
+import { Button } from '@blueprintjs/core';
+import Login from '../classComponents/login';
 export default function Header() {
-    return (
-
-        <Navbar style={{ background: Colors.ROSE5  , align: Alignment.CENTER}}>
-        <Navbar.Group align={Alignment.CENTER}>
-            
-            
-            <Button style={{ color: Colors.BLACK}} className="bp4-minimal"  text="Home" />
-            
-        </Navbar.Group>
-    </Navbar>
-
-    )
+  const protect = useContext(LoginContext);
+  return (
+    <>
+      <div id='header'>
+        <header id='site-header'>
+        </header>
+        <Login />
+        <When condition={protect.isLoggedin}>
+          <div id='user-info'>
+            <span>Username : {protect.userInfo.username}</span>
+            <span>Role: {protect.userInfo.role}</span>
+          </div>
+          <Button intent='danger' onClick={(e) => protect.logout()}>
+            Logout
+          </Button>
+        </When>
+      </div>
+    </>
+  );
 }
